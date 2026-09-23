@@ -6,8 +6,8 @@ pipeline {
             steps {
                 script{
                     sh ''' 
-                        sudo apt update 
-                        
+                        apt update 
+
                         if ! command -v docker &> /dev/null
                         then
                             echo "Docker not found, installing..."
@@ -15,7 +15,7 @@ pipeline {
                             echo "Docker is already installed."
                         fi
                         
-                        sudo apt install docker.io -y
+                        apt install docker.io -y
 
                         if ! command -v docker-compose &> /dev/null
                         then
@@ -24,7 +24,7 @@ pipeline {
                             echo "docker-compose is already installed."
                         fi
                         
-                        sudo apt install docker-compose -y
+                        apt install docker-compose -y
                         
                     '''
                 }
