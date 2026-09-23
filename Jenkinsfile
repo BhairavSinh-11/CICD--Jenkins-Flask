@@ -2,6 +2,34 @@ pipeline {
     agent any
 
     stages {
+        stage('install docker-compose') {
+            steps {
+                script{
+                    sh ''' 
+                        sudo apt update 
+                        
+                        if ! command -v docker &> /dev/null
+                        then
+                            echo "Docker not found, installing..."
+                        else
+                            echo "Docker is already installed."
+                        fi
+                        
+                        sudo apt install docker.io -y
+
+                        if ! command -v docker-compose &> /dev/null
+                        then
+                            echo "docker-compose not found, installing..."
+                        else
+                            echo "docker-compose is already installed."
+                        fi
+                        
+                        sudo apt install docker-compose -y
+                        
+                    '''
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 withCredentials([file(credentialsId: 'jenkins-env-file', variable: 'ENV_FILE_PATH')]) {
