@@ -98,15 +98,17 @@ Secret .env Management using Jenkins Credentials
    docker-compose up -d --build
 
 
-6. run jenkins on :8080 and put your credentials (.env) inside jenkins credtentials > secret file 
+6. update security group for e2 and then run jenkins on :8080
+
+7. put your credentials (.env) inside jenkins credtentials > secret file 
 
 
-7. Run it 
+8. Run it 
 
     http://localhost or http://your_aws_ip (if you run inside aws)
 
 
-8. For jenkins-github pipeline you need to enable webhook in Github 
+9. For jenkins-github pipeline you need to enable webhook in Github 
 
 
 ##🧠 What I Learned
